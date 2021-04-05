@@ -9,7 +9,7 @@ function home () {
         if (!isLogged) {
             router.push("/");
           }
-      });
+      },[]);
 
     return (        
         <React.Fragment>

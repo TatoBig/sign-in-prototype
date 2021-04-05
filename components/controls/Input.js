@@ -1,19 +1,16 @@
-import { TextField } from '@material-ui/core'
-import React from 'react'
+import React from "react"
+import { Controller } from "react-hook-form"
+import { TextField } from "@material-ui/core"
 
-const Input = (props) => {
-
-    const {name, label, value, onChange, type} = props
+function FormInput(props) {
+    const {name, label, control, type} = props
     return (
-        <TextField
-            label={label}
+        <Controller
+            render={({ field }) => <TextField  id="standard-basic" variant="outlined" label={label} type={type} {...field} />}
             name={name}
-            variant="outlined"
-            value={value}
-            onChange={onChange}            
-            type={type}
-          />
-    )
+            control={control}
+        />
+  )
 }
 
-export default Input
+export default FormInput

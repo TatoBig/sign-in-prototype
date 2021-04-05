@@ -1,36 +1,27 @@
 import React from 'react'
 import { Button } from '@material-ui/core/'
 import Input from './controls/Input'
-import Link from 'next/link'
-import { useSelector } from 'react-redux'
 
 
 function signInForm(props) {
     return (
     <React.Fragment>
+      <form onSubmit={props.handleSubmit(props.onSubmit)}>
         <Input 
-            name="username" 
-            label="Usuario"
-            value={props.values.username}
-            onChange={props.handleInputChange}
-          />
-          <Input 
-            name="password" 
-            label="Contraseña"
-            type="password"
-            value={props.values.password}
-            onChange={props.handleInputChange}
-          />      
-        <Button variant="text" color="default" onClick={props.submit}>
-            {props.logged ? 
-            <Link href="/home">
-                <a>Ingresando...</a>
-            </Link> : 
-            'Ingresar'}              
+          control={props.control}
+          label="Usuario"
+          name="username"
+        />
+        <Input 
+          control={props.control}
+          label="Contraseña"
+          name="password"
+          type="password"
+        />        
+        <Button variant="text" color="default" type="submit">
+            Ingresar
         </Button>
-        <Button variant="text" color="default" onClick={props.submitTest}>
-          sign in
-        </Button>
+      </form>
     </React.Fragment>
   )
 }
